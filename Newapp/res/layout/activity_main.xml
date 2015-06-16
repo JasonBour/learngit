@@ -1,0 +1,104 @@
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sat="http://schemas.android.com/apk/res/com.example.newapp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+ 
+    <!--  
+ <android.view.ext.SatelliteMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="8dp"
+        sat:satelliteDistance="170dp"
+        sat:mainImage="@drawable/ic_launcher"
+        sat:totalSpacingDegree="90"
+        sat:closeOnClick="true"
+        sat:expandDuration="500"/>
+    -->
+    <RelativeLayout
+        android:id="@+id/aboveLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#dbdbdb"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/fragmentRoot"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <LinearLayout
+                android:id="@+id/bottomList"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/black"
+                android:orientation="horizontal" >
+              <RadioGroup 
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="horizontal">
+                  
+              
+               
+
+                    <RadioButton
+                        android:id="@+id/rbWeiXin"
+                        style="@style/footbar"
+                        android:drawableTop="@drawable/tab_weixin_normal"
+                        android:paddingTop="8dp"
+                        android:text="微信" 
+                        android:focusable="true" 
+                        android:background="@drawable/weixin"/>
+             
+
+               
+
+                    <RadioButton
+                        android:id="@+id/rbAddress"
+                        style="@style/footbar"
+                        android:drawableTop="@drawable/tab_address_normal"
+                        android:paddingTop="8dp"
+                        android:text="通讯录"
+                        android:background="@drawable/weixin" />
+               
+
+
+                
+
+                    <RadioButton
+                        android:id="@+id/rbFind"
+                        style="@style/footbar"
+                        android:drawableTop="@drawable/tab_find_frd_normal"
+                        android:paddingTop="8dp"
+                        android:text="发现" 
+                        android:background="@drawable/weixin"/>
+               
+
+
+               
+
+                    <RadioButton
+                        android:id="@+id/rbMe"
+                        style="@style/footbar"
+                        android:drawableTop="@drawable/tab_settings_normal"
+                        android:paddingTop="8dp"
+                        android:text="我" 
+                        android:background="@drawable/weixin"/>
+                
+                
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
