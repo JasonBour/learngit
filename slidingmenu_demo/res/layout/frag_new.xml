@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent" 
+android:background="#FFEFD5">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新建标题"
+        android:id="@+id/newTitle"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/selectBook"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择笔记本"
+        android:id="@+id/selectBook"
+        android:layout_marginTop="39dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/newTitle" />
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+       
+        android:layout_alignBottom="@+id/selectBook"
+        android:entries="@array/book"
+        android:layout_alignStart="@+id/editText2"></Spinner>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_marginTop="39dp"
+        android:layout_alignStart="@+id/newTitle"
+        android:layout_below="@+id/newTitle"
+        
+        android:minLines="10"
+        android:layout_alignEnd="@+id/editText2" 
+         android:background="#FFDEAD"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_above="@+id/editText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="55dp"
+        android:layout_toEndOf="@+id/selectBook" 
+        android:background="#FFDEAD"/>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_marginTop="117dp"
+        android:text="提交"/>
+
+</RelativeLayout>

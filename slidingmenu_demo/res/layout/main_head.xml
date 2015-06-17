@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_blue" >
+
+    <ImageView
+        android:id="@+id/topButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="4dp"
+        android:src="@drawable/ic_top_bar_category" />
+
+    <TextView
+        android:id="@+id/topTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="今日"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+    
+    <!-- 这个是更多 点击之后 搜索的--> 
+    <Button
+        android:id="@+id/search"
+        android:layout_toRightOf="@+id/topTv"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:background="#5CACEE"
+        android:text="搜索"
+        ></Button>
+    
+   
+       <!-- 这个是更多 点击之后 popwindow -->  
+     <Button
+        android:id="@+id/more" 
+         android:layout_toRightOf="@+id/search"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#5CACEE"
+        android:text="更多"
+         ></Button>   
+    
+    
+    
+</RelativeLayout>

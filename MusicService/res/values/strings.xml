@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MusicService</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="button">TEST</string>
+    <string name="close_bottom_text">未展开</string>
+    <string name="open_bottom_text">已展开</string>
+    <string name="left_fragment_button">this is left_main_fragment</string>
+    <string name="right_fragment_button">this is right_main_fragment</string>
+
+</resources>

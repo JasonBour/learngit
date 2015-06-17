@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical">
+ <LinearLayout
+        
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"   
+        android:background="@drawable/bc_dia" 
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="欧美音乐" />
+
+        <LinearLayout
+            android:id="@+id/lin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/pic1"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic1"
+                android:background="@drawable/p1" />
+
+            <ImageButton
+                android:id="@+id/pic2"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic2"
+                android:background="@drawable/p2" />
+
+            <ImageButton
+                android:id="@+id/pic3"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic3"
+                android:background="@drawable/p3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+             >
+
+            <ImageButton
+                android:id="@+id/pic4"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic4" 
+                android:background="@drawable/p4"/>
+
+            <ImageButton
+                android:id="@+id/pic5"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic5" 
+                android:background="@drawable/p5"/>
+
+            <ImageButton
+                android:id="@+id/pic6"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic6"
+                android:background="@drawable/p6" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="华语音乐" />
+
+        <LinearLayout
+            android:id="@+id/lin4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/pic7"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic5" 
+                android:background="@drawable/p7"/>
+
+            <ImageButton
+                android:id="@+id/pic8"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic6" 
+                android:background="@drawable/p8"/>
+
+            <ImageButton
+                android:id="@+id/pic9"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic7" 
+                android:background="@drawable/p9"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin4"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/pic10"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic8" 
+                android:background="@drawable/p10"/>
+
+            <ImageButton
+                android:id="@+id/pic11"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic9" 
+                android:background="@drawable/p11"/>
+
+            <ImageButton
+                android:id="@+id/pic12"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic10"
+                android:background="@drawable/p12" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lin6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="日本音乐" />
+
+        <LinearLayout
+            android:id="@+id/lin7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin6"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/pic13"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic11" />
+
+            <ImageButton
+                android:id="@+id/pic14"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic12" />
+
+            <ImageButton
+                android:id="@+id/pic15"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin7"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/pic17"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic14" />
+
+            <ImageButton
+                android:id="@+id/pic18"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic13" />
+
+            <ImageButton
+                android:id="@+id/pic19"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/pic12" />
+        </LinearLayout>
+   </LinearLayout>
+</ScrollView>
