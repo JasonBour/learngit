@@ -24,6 +24,6 @@ public class AddressFragment extends Fragment{
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 	
-		((TextView)getView().findViewById(R.id.tvTop)).setText("address");
+		
 	}
 }
