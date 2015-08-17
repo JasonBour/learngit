@@ -68,10 +68,8 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
     public String data = "" ;  //将服务器数据以字符串保存下来  之后通过Json解析
      public Handler handler = null;
 	public ImageView  mIV ;
-	public TextView mIB ;
-	public TextView join;
+	public TextView mIB,join,mTV,mTT ;
 	public ListView   mLV ;
-	public TextView  mTV ;
 	 private ImageLoader loader ;
 	 public  DisplayImageOptions options; 
 	 public Context context;
@@ -83,9 +81,7 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
     public String tag = "jason";
     public String destinationUrl = "http://1.universities.sinaapp.com/index.php";
 	public View onCreateView( final LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		
-		
+			Bundle savedInstanceState) {	
 				view = inflater.inflate(R.layout.wei_xin_fragment, container, false);
 				context = view.getContext();
 				InitImageLoader(context); 
@@ -93,10 +89,6 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
 		return view ;
 	}
 	
-	 
-		  
-		  
-	 
 
 	  @SuppressWarnings("deprecation")
 	public  void  initView(){
@@ -104,6 +96,7 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
 		  mIB = (TextView)view.findViewById(R.id.detail);
 		  mLV = (ListView)view.findViewById(R.id.list);
 		  mTV = (TextView)view.findViewById(R.id.content);
+		  mTT= (TextView)view.findViewById(R.id.title);
 		  
 		 
 		  
@@ -199,10 +192,8 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
 			BufferedReader buffer = new BufferedReader(read);
 			String readLine = null ;
 			while((readLine=buffer.readLine())!=null){
-				data += readLine ;
-			
-			}
-			
+				data += readLine ;			
+			}			
 			read.close();
 			conn.disconnect();
 		} catch (IOException e) {
@@ -238,33 +229,20 @@ public class WeiXinFragment extends Fragment implements OnRefreshListener{
 						for(int i  = 0 ;i<ja.length();i++){
 							final  Map<String ,Object> map =new HashMap<String ,Object>();
 							JSONObject  jo1 = (JSONObject)ja.get(i);
-							map.put("name", jo1.getString("name"));  //姓名
-							
-							Log.i(tag, jo1.getString("name")+"jason");
-							map.put("image", jo1.getString("image")); //图片链接
-							list.add(map);
-							
-							
-						}
-						
-						
-						
-						
-					} catch (JSONException e) {
-						
+							map.put("content", jo1.getString("content")); //id content
+							map.put("detail", jo1.getString("detail")); //id detail
+							map.put("title", jo1.getString("name"));  //姓名
+							map.put("person", jo1.getString("image")); //图片链接
+							list.add(map);			
+						}						
+					} catch (JSONException e) {						
 						e.printStackTrace();
 					} 
-		        	
-		        	  
-		        	  
-		          }
-			 
+          }			 
 		          adapter = new ListAdapter(context,list);
 		 	     mLV.setAdapter(adapter);
 			 }
-		};
-		
-		
+		};		
 	}
 
 

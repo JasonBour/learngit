@@ -2,21 +2,16 @@ package com.example.newapp;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import com.example.fragments.AddressFragment;
 import com.example.fragments.FindFragment;
 import com.example.fragments.MeFragment;
 import com.example.fragments.WeiXinFragment;
+import com.example.utils.MyApplication;
+import com.example.utils.new_state_listener;
 
 
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
@@ -24,16 +19,13 @@ import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
-
-
-
-import android.app.ActionBar.LayoutParams;
-import android.app.Activity;
 import android.app.PendingIntent;
-import android.app.SearchManager;
 import android.app.PendingIntent.CanceledException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -47,7 +39,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -61,29 +53,59 @@ import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity  implements OnMenuItemClickListener,
 OnCreateContextMenuListener, OnItemClickListener, android.widget.PopupMenu.OnMenuItemClickListener{
-	
+ public MyApplication myApplication ;	
+ public SharedPreferences preferences;
  public LocationManager lm; 
  public static FragmentManager fMgr ;
  PopupWindow pop ;
-	
+ Intent intent;  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		 setContentView(R.layout.activity_main);
+		 setContentView(R.layout.activity_main);    
 		lm =  (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
-		fMgr = getSupportFragmentManager();
-		
+		fMgr = getSupportFragmentManager();		
 		initFragment();
 		dealBottomButtonsClickEvent();
 		
 	        
 	}
-	
 
 	
-	
-	
+	//判断登录状态以及安装状态
+	public void state(){
+		 preferences  = getSharedPreferences("count",MODE_WORLD_READABLE); 
+		 preferences = getSharedPreferences("login_state",MODE_WORLD_READABLE);
+		 int count = preferences.getInt("count", 0);   
+		 //判断程序与第几次运行，如果是第一次运行则跳转到引导页面     \
+		 int login_state = preferences.getInt("login_state", 0);
+		//判断是否登录  0为未登录		 
+		  if (count == 0) {    
+			intent  = new Intent();
+		  intent.setClass(getApplicationContext(),viewpager.class);    
+		 startActivity(intent);    
+		 this.finish();    
+		 }else{
+		  if(login_state == 0){			
+			 intent = new Intent();
+			 intent.setClass(getApplicationContext(), login.class);
+			 startActivity(intent);
+			 this.finish();			
+		 } 
+		  
+		  Editor editor = preferences.edit();   
+			 editor.putInt("login_state", ++login_state);
+			 editor.commit();
+		 }
+		 Editor editor = preferences.edit();    
+		   //存入数据      
+		 editor.putInt("count", ++count);  
+		 //提交修改      
+		 editor.commit();
+  
+		
+		
+	}
 	
 	
 	
@@ -119,14 +141,25 @@ OnCreateContextMenuListener, OnItemClickListener, android.widget.PopupMenu.OnMen
 	
 	*/
 	
-	
-	
 
 	
 	/*
 	 * 初始化fragment
 	 */
 	
+	
+	/*
+	 * 监听网络状态的广播
+	 */
+	private void registerReceiver(new_state_listener receiver, IntentFilter filter) {
+		IntentFilter intentfilter = new IntentFilter();
+		intentfilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+		intentfilter.setPriority(1000);
+        registerReceiver(new new_state_listener(),intentfilter);
+	}
+	/*
+	 * 初始化fragment
+	 */
 	public void initFragment(){
 		
 		FragmentTransaction ft = fMgr.beginTransaction();
@@ -270,20 +303,6 @@ public void getLocation(){
 	double lo =loc.getLongitude();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @Override

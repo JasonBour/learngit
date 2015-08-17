@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -28,7 +30,8 @@ private MapView mapView;
 private OnLocationChangedListener mListener;
 private LocationManagerProxy mAMapLocationManager;
 private RadioGroup mGPSModeGroup;
-
+private ImageView image ;
+private Button button ;
 	private EditText startDateTime;
 	private EditText endDateTime;
 
@@ -38,14 +41,27 @@ private RadioGroup mGPSModeGroup;
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
+		 super.onCreate(savedInstanceState);
 		 setContentView(R.layout.main);
-	
-		 mapView = (MapView) findViewById(R.id.map);
-			mapView.onCreate(savedInstanceState);// 此方法必须重写
-			init();
-	// 两个输入框
+		 image = (ImageView)findViewById(R.id.back);
+		 button = (Button)findViewById(R.id.button);
+	        image.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+				finish();//销毁当前Activity		
+				}	});
+	        button.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View v) {
+			    //提交按钮  
+					
+					
+				}});
+		    //mapView = (MapView) findViewById(R.id.map);
+			//mapView.onCreate(savedInstanceState);// 此方法必须重写
+			//init();
+	        // 两个输入框
 			startDateTime = (EditText) findViewById(R.id.inputDate);
 			endDateTime = (EditText)findViewById(R.id.inputDate2);
 
@@ -71,9 +87,13 @@ private RadioGroup mGPSModeGroup;
 				}
 			});
 	
+			
 	}
 
 
+	
+	
+	
 	/**
 	 * 初始化
 	 */
@@ -117,17 +137,16 @@ private RadioGroup mGPSModeGroup;
 	}
 
 	/**
-	 * 方法必须重写
+	 * 以下方法必须重写
 	 */
+	/*
 	@Override
 	protected void onResume() {
 		super.onResume();
 		mapView.onResume();
 	}
 
-	/**
-	 * 方法必须重写
-	 */
+	
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -135,24 +154,21 @@ private RadioGroup mGPSModeGroup;
 		deactivate();
 	}
 
-	/**
-	 * 方法必须重写
-	 */
+	
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		mapView.onSaveInstanceState(outState);
 	}
 
-	/**
-	 * 方法必须重写
-	 */
+	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		mapView.onDestroy();
 	}
 
+**/
 	/**
 	 * 此方法已经废弃
 	 */
@@ -224,9 +240,7 @@ private RadioGroup mGPSModeGroup;
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event){
 		finish();
-		
-		
-		return false;
+	return false;
 		
 	}
 	

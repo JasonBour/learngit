@@ -25,8 +25,7 @@ public class ListAdapter  extends BaseAdapter{
 	    private Context context ;
 	 public WeiXinFragment main;
 	 public ListAdapter(Context context,List<Map<String, Object>> data){  
- Log.i("jason", "this is the adapter");
-  this.context=context;  
+        this.context=context;  
         this.data=data;  
         this.layoutInflater=LayoutInflater.from(context); 
         
@@ -62,9 +61,10 @@ public class ListAdapter  extends BaseAdapter{
 			contain = new container();
 			 convertView=layoutInflater.inflate(R.layout.item, null); 
 			 contain.mIV =(ImageView)convertView.findViewById(R.id.person);
+			 
 			 contain.mIB = (TextView)convertView.findViewById(R.id.detail);
 			  contain.mTV = (TextView)convertView.findViewById(R.id.content);
-			  
+			  contain.mTT = (TextView)convertView.findViewById(R.id.title);
 			  convertView.setTag(contain);
 		}else{
 			contain = (container)convertView.getTag();
@@ -72,10 +72,11 @@ public class ListAdapter  extends BaseAdapter{
       main = new WeiXinFragment();
 		loader = ImageLoader.getInstance();
 		Log.i("jason", "imageLoader");
-		loader.displayImage((String)data.get(position).get("image"), contain.mIV,main.options);
-		contain.mTV.setText((String)data.get(position).get("name"));
-		//contain.mIB.setText((String)data.get(position).get("detail"));
+		loader.displayImage((String)data.get(position).get("person"), contain.mIV,main.options);
+		contain.mTV.setText((String)data.get(position).get("content"));
+		contain.mIB.setText((String)data.get(position).get("detail"));
 		//contain.mIB.setBackgroundResource((int)data.get(position).get("detail"));
+		contain.mTT.setText((String)data.get(position).get("title"));
 		
 		
 		
@@ -94,7 +95,8 @@ public class ListAdapter  extends BaseAdapter{
 	    public ImageView  mIV ;
 		public TextView mIB;
 		public TextView  mTV ;
-		
+		public TextView mTT ;
+ 		
  }
 	
 }
