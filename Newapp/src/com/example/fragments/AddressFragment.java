@@ -1,7 +1,7 @@
 package com.example.fragments;
 
 
-
+import com.mrwujay.cascade.activity.MainActivity;
 import com.example.newapp.R;
 
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class AddressFragment extends Fragment{
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-	
+	    
 		
 	}
 }
