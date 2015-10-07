@@ -9,6 +9,7 @@
     android:layout_height="100dp"/>
  
    <WebView 
+       android:layout_below="@+id/button"
        android:id="@+id/web"
       android:layout_width="fill_parent"
     android:layout_height="fill_parent"/>

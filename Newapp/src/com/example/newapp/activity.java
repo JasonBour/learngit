@@ -1,6 +1,7 @@
 package com.example.newapp;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,19 +13,29 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMap.InfoWindowAdapter;
+import com.amap.api.maps.AMap.OnInfoWindowClickListener;
+import com.amap.api.maps.AMap.OnMarkerClickListener;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.example.fragments.FindFragment;
 import com.example.utils.DateTimePickDialogUtil;
 
 public class activity extends Activity  implements LocationSource,
-AMapLocationListener, OnCheckedChangeListener {
+AMapLocationListener, OnCheckedChangeListener, InfoWindowAdapter, OnInfoWindowClickListener, OnMarkerClickListener {
 private AMap aMap;
 private MapView mapView;
 private OnLocationChangedListener mListener;
@@ -37,8 +48,10 @@ private Button button ;
 
 	private String initStartDateTime = "2013年9月3日 14:44"; // 初始化开始时间
 	private String initEndDateTime = "2014年8月23日 17:44"; // 初始化结束时间
+
+	private LatLng person1  = new LatLng(30.421321 ,114.224161);
 	
-	
+	private Marker person ;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
@@ -58,9 +71,9 @@ private Button button ;
 					
 					
 				}});
-		    //mapView = (MapView) findViewById(R.id.map);
-			//mapView.onCreate(savedInstanceState);// 此方法必须重写
-			//init();
+		    mapView = (MapView) findViewById(R.id.map);
+			mapView.onCreate(savedInstanceState);// 此方法必须重写
+			init();
 	        // 两个输入框
 			startDateTime = (EditText) findViewById(R.id.inputDate);
 			endDateTime = (EditText)findViewById(R.id.inputDate2);
@@ -104,17 +117,37 @@ private Button button ;
 		}
 		mGPSModeGroup = (RadioGroup) findViewById(R.id.gps_radio_group);
 		mGPSModeGroup.setOnCheckedChangeListener(this);
+	
 	}
 
 	/**
 	 * 设置一些amap的属性
 	 */
 	private void setUpMap() {
+		
+		MyLocationStyle myLocationStyle = new MyLocationStyle();
+		myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_grey600_48dp));
+		myLocationStyle.strokeColor(Color.BLUE);
+		myLocationStyle.strokeWidth(5);
+		aMap.setMyLocationStyle(myLocationStyle);
 		aMap.setLocationSource(this);// 设置定位监听
 		aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
 		aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
 		// 设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
 		aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+		person = aMap.addMarker(new MarkerOptions()
+				.position(person1)
+				.title("我要吃水果")
+				.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_grey600_48dp))
+				//.perspective(true)
+                //.draggable(true)				
+				);
+		
+		aMap.setOnMarkerClickListener(this);
+		aMap.setOnInfoWindowClickListener(this);
+		aMap.setInfoWindowAdapter(this);
+		
+		
 	}
 
 	@Override
@@ -139,7 +172,7 @@ private Button button ;
 	/**
 	 * 以下方法必须重写
 	 */
-	/*
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -168,12 +201,14 @@ private Button button ;
 		mapView.onDestroy();
 	}
 
-**/
+
 	/**
 	 * 此方法已经废弃
 	 */
+	
 	@Override
 	public void onLocationChanged(Location location) {
+		
 	}
 
 	@Override
@@ -188,11 +223,14 @@ private Button button ;
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 	}
 
+
 	/**
 	 * 定位成功后回调函数
 	 */
 	@Override
 	public void onLocationChanged(AMapLocation amapLocation) {
+		//Toast.makeText(getApplicationContext(), aMap.getMyLocation().getLatitude()+"all"+aMap.getMyLocation().getLongitude(), Toast.LENGTH_LONG).show();
+		//在这里加东西会导致不能定位
 		if (mListener != null && amapLocation != null) {
 			if (amapLocation != null
 					&& amapLocation.getAMapException().getErrorCode() == 0) {
@@ -201,6 +239,8 @@ private Button button ;
 				Log.e("AmapErr","Location ERR:" + amapLocation.getAMapException().getErrorCode());
 			}
 		}
+		//	Toast.makeText(getApplicationContext(), amapLocation.getLatitude()+"all"+amapLocation.getLongitude(), Toast.LENGTH_LONG).show();	
+	   
 	}
 
 	/**
@@ -239,9 +279,58 @@ private Button button ;
 	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event){
+		
 		finish();
 	return false;
 		
+	}
+
+
+
+
+
+	@Override
+	public boolean onMarkerClick(Marker arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
+
+	@Override
+	public void onInfoWindowClick(Marker arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+  
+	@Override
+	public View getInfoContents(Marker arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+  /**
+   * 显示特定信息  可以通过inflate  xml文件
+   */
+	@Override
+	public View getInfoWindow(Marker arg0) {
+		View view  = getLayoutInflater().inflate(R.layout.marker, null);
+		ImageView image = (ImageView)view.findViewById(R.id.image);
+		TextView info = (TextView)view.findViewById(R.id.info);
+		
+		info.setText(person.getTitle());
+		
+		
+		return view;
 	}
 	
 	

@@ -50,6 +50,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.SearchView;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
+import cn.bmob.v3.Bmob;
 
 public class MainActivity extends FragmentActivity  implements OnMenuItemClickListener,
 OnCreateContextMenuListener, OnItemClickListener, android.widget.PopupMenu.OnMenuItemClickListener{
@@ -62,7 +63,8 @@ OnCreateContextMenuListener, OnItemClickListener, android.widget.PopupMenu.OnMen
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 setContentView(R.layout.activity_main);    
+		 setContentView(R.layout.activity_main);
+		 Bmob.initialize(this, "32c6c66fc631310557d77b2534762d42");
 		lm =  (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
 		fMgr = getSupportFragmentManager();		
 		initFragment();

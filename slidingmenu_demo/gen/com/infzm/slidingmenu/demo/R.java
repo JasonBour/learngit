@@ -316,10 +316,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int id_swipe_ly=0x7f06000b;
         public static final int image=0x7f06001d;
         public static final int iv_system_right=0x7f060024;
-        public static final int left=0x7f060000;
+        public static final int left=0x7f060001;
         public static final int line1=0x7f060027;
         public static final int list=0x7f06000c;
-        public static final int margin=0x7f060002;
+        public static final int margin=0x7f060004;
         public static final int menu_frame=0x7f060025;
         public static final int menu_frame_two=0x7f060026;
         public static final int more=0x7f060022;
@@ -327,11 +327,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int newTitle=0x7f06000d;
         public static final int open=0x7f06002e;
         public static final int profile_image=0x7f060016;
-        public static final int right=0x7f060001;
+        public static final int right=0x7f060002;
         public static final int save=0x7f06002f;
         public static final int search=0x7f060021;
         public static final int selectBook=0x7f06000e;
-        public static final int selected_view=0x7f060004;
+        public static final int selected_view=0x7f060000;
         public static final int setting_list=0x7f060013;
         public static final int slidingmenumain=0x7f060032;
         public static final int spinner=0x7f06000f;

@@ -94,10 +94,10 @@ int id fullscreen 0x7f060003
 int id id_swipe_ly 0x7f06000b
 int id image 0x7f06001d
 int id iv_system_right 0x7f060024
-int id left 0x7f060000
+int id left 0x7f060001
 int id line1 0x7f060027
 int id list 0x7f06000c
-int id margin 0x7f060002
+int id margin 0x7f060004
 int id menu_frame 0x7f060025
 int id menu_frame_two 0x7f060026
 int id more 0x7f060022
@@ -105,11 +105,11 @@ int id name 0x7f060028
 int id newTitle 0x7f06000d
 int id open 0x7f06002e
 int id profile_image 0x7f060016
-int id right 0x7f060001
+int id right 0x7f060002
 int id save 0x7f06002f
 int id search 0x7f060021
 int id selectBook 0x7f06000e
-int id selected_view 0x7f060004
+int id selected_view 0x7f060000
 int id setting_list 0x7f060013
 int id slidingmenumain 0x7f060032
 int id spinner 0x7f06000f

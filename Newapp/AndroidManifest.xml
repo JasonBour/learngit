@@ -7,11 +7,16 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="17" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_LOGS"/>
+    
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>  
         <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -64,7 +69,7 @@
        
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="200a8164f6361c686f8590bd65601d51" />
+            android:value="06ba82149e41903c0e5f5ce7f63de7ce" />
     </application>
 
 </manifest>
